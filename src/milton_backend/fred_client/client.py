@@ -1,3 +1,6 @@
+import requests
+from pydantic import BaseModel
+
 class FredAPIClient:
     base_url = "https://api.stlouisfed.org/fred"
 
@@ -10,7 +13,7 @@ class FredAPIClient:
         Parameters:
             endpoint (str): The FRED API endpoint to hit (e.g., 'series/observations').
             **kwargs: Arbitrary keyword arguments, defaulting to JSON format. These include:
-                - file_type (str): Format of the output ('xml', 'json', 'txt', 'xls'). Default is 'json'.
+                - file_type (str): Format of the output ('xml', 'json'). Default is 'json' on our end. Without specifying, the FRED API will give you XML.
                 - limit (int): Maximum number of results to return.
                 - sort_order (str): Order of the results ('asc', 'desc').
                 - order_by (str): Attribute by which to order the results (e.g., 'series_count', 'popularity').
