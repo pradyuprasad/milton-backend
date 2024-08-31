@@ -98,6 +98,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "milton-backend", editable = "." },
     { name = "pydantic", specifier = ">=2.8.2" },
     { name = "python-dotenv", specifier = ">=1.0.1" },
     { name = "requests", specifier = ">=2.32.3" },
