@@ -31,10 +31,10 @@ class Series(BaseModel):
 
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class Keywords(BaseModel):
-    word: List[str]
+    keyword_list: List[str]
 
 
 class SeriesForSearch(BaseModel):

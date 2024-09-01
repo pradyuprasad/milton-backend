@@ -1,5 +1,4 @@
 import requests
-from pydantic import BaseModel
 
 class FredAPIClient:
     base_url = "https://api.stlouisfed.org/fred"

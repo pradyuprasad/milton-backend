@@ -5,4 +5,3 @@ import instructor
 from groq import Groq
 from openai import OpenAI
 from src.milton_backend.common.models import Keywords, SeriesForSearch
-from src.milton_backend.vector_db import ChromaDBClient

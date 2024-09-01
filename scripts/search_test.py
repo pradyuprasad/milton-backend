@@ -1,4 +1,6 @@
-from . import SearchClient
+from src.milton_backend.search.search import SearchClient
+
 
 client = SearchClient()
-ans = client.find_relevant_series(query="What is the GDP of the USA", verbose=True)
+
+client.search("GDP", verbose=True)
