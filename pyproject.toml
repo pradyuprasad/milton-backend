@@ -12,6 +12,8 @@ dependencies = [
     "fastapi>=0.112.2",
     "python-dateutil>=2.9.0.post0",
     "chromadb>=0.5.5",
+    "instructor>=1.4.0",
+    "groq>=0.10.0",
 ]
 
 [build-system]

@@ -1,5 +1,5 @@
 from pydantic import BaseModel, field_validator
-from typing import Optional
+from typing import List, Optional
 from datetime import datetime
 from dateutil import parser
 
@@ -32,3 +32,21 @@ class Series(BaseModel):
 
     class Config:
         orm_mode = True
+
+class Keywords(BaseModel):
+    word: List[str]
+
+
+class SeriesForSearch(BaseModel):
+    fred_id:str
+    title:str
+    units:str
+    popularity: int
+    relevance_lower_better: Optional[float]
+
+    class Config:
+        frozen = True
+
+class ClassifiedSeries(BaseModel):
+    relevant: List[SeriesForSearch]
+    notRelevant: List[SeriesForSearch]
