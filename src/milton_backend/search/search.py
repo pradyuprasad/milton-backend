@@ -111,13 +111,9 @@ def keyword_semantic_search(keywords: List[str], n_results: int = 5, verbose:boo
     return series_set
 
 def rank_relevant_outputs(self, series_list:List[SeriesForSearch], query:str) -> SeriesForSearch:
-    instructor
-    try:
     
-        return self.groq_instructor_client.chat.completions.create(response_model=ClassifiedSeries, messages=[
-            {"role": "system", "content": "You will be given a number of economic series from the user. Your job is to mark them as relevant or irrelevant for a given query and output it in the given format"}, {
-                "role": "user", "content":f"The user's query is {query}. The possible datasets are {series_list}"
-            }
-        ], model="llama3-70b-8192")
-    except Exception:
-        return rank_relevant_outputs(series_list=series_list, query=query) 
+    return self.openai_instructor_client.chat.completions.create(response_model=ClassifiedSeries, messages=[
+        {"role": "system", "content": "You will be given a number of economic series from the user. Your job is to mark them as relevant or irrelevant for a given query and output it in the given format"}, {
+            "role": "user", "content":f"The user's query is {query}. The possible datasets are {series_list}"
+        }
+    ], model="gpt-4o-mini")
