@@ -21,6 +21,7 @@ def create_series_table():
     create_table_query = """
     CREATE TABLE IF NOT EXISTS series (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+        fred_id TEXT NOT NULL UNIQUE,
         realtime_start TEXT,
         realtime_end TEXT,
         title TEXT NOT NULL,
@@ -44,7 +45,7 @@ def create_series_table():
 def initialize_database():
     create_tags_table()
     create_series_table()
+    print("Database initialization complete.")
 
 if __name__ == "__main__":
-    initialize_database()
-    print("Database initialization complete.")
+    initialize_database()    

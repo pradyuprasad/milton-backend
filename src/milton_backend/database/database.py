@@ -2,6 +2,8 @@ import sqlite3
 
 from milton_backend.config.config import Config
 
+config = Config()
+
 class Database:
     _instance = None
     _conn = None
@@ -16,6 +18,6 @@ class Database:
 
     @classmethod
     def _initialize(cls):
-        cls._path = Config.get('database_path')
+        cls._path = config.get(key='database_path')
         cls._conn = sqlite3.connect(cls._path)
         cls._cursor = cls._conn.cursor()        
