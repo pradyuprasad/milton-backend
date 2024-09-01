@@ -1,3 +1,4 @@
+from typing import Dict, List
 from .database import Database
 from . import Series
 
@@ -57,3 +58,37 @@ def insert_series(series: Series):
     ))    
         
     db._conn.commit()
+
+def get_top_series_by_popularity(n: int = 500) -> List[Dict[str, str]]:
+    # Get the Database instance
+    db = Database()
+
+    # Define the query
+    query = """
+    SELECT s.fred_id, s.title, s.units, s.frequency, s.seasonal_adjustment, 
+           s.last_updated, s.popularity, s.notes
+    FROM series s
+    ORDER BY s.popularity DESC
+    LIMIT ?
+    """
+    
+    # Execute the query with the parameter 'n'
+    db._cursor.execute(query, (n,))
+    rows = db._cursor.fetchall()
+    
+    # Convert the rows into a list of dictionaries
+    series_list = [
+        {
+            'fred_id': row[0],
+            'title': row[1],
+            'units': row[2],
+            'frequency': row[3],
+            'seasonal_adjustment': row[4],
+            'last_updated': row[5],
+            'popularity': row[6],
+            'notes': row[7],
+        }
+        for row in rows
+    ]
+    
+    return series_list
