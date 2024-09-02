@@ -1,4 +1,6 @@
 from .database import Database
+from src.milton_backend.common.models import Series
+
 
 def create_tags_table():
     db = Database()
@@ -15,6 +17,7 @@ def create_tags_table():
     """
     db._cursor.execute(create_table_query)
     db._conn.commit()
+
 
 def create_series_table():
     db = Database()
@@ -42,10 +45,12 @@ def create_series_table():
     db._cursor.execute(create_table_query)
     db._conn.commit()
 
+
 def initialize_database():
     create_tags_table()
     create_series_table()
     print("Database initialization complete.")
 
+
 if __name__ == "__main__":
-    initialize_database()    
+    initialize_database()
